@@ -4,6 +4,7 @@
 #include <iostream>
 #include <ctime>
 #include <omp.h>
+#include <Windows.h>
 
 using namespace std;
 
@@ -428,19 +429,109 @@ void task12()
     omp_destroy_lock(&lock);
 }
 
+void task13_1()
+{
+    int order = 7;
+#pragma omp parallel num_threads(8) shared(order)
+    {
+        int rank = omp_get_thread_num();
+        int size = omp_get_num_threads();
+        while (order != rank)
+            Sleep(500);
+
+        printf("Thread %d out of %d threads. Hello world!\n", rank, size);
+        order--;
+    }
+}
+
+void task13_2()
+{
+    int order = 7;
+#pragma omp parallel num_threads(8) shared(order)
+    {
+        int rank = omp_get_thread_num();
+        int size = omp_get_num_threads();
+        while (order > -1)
+        {
+            if (order == rank)
+            {
+                printf("Thread %d out of %d threads. Hello world!\n", rank, size);
+                order--;
+            }
+#pragma omp barrier
+        }
+    }
+}
+
+void task13_3()
+{
+    int order = 7;
+#pragma omp parallel num_threads(8) shared(order)
+    {
+        int rank = omp_get_thread_num();
+        int size = omp_get_num_threads();
+        while (order > -1)
+        {
+
+            if (order == rank)
+            {
+#pragma omp critical
+                {
+                    printf("Thread %d out of %d threads. Hello world!\n", rank, size);
+                    order--;
+                }
+            }
+
+        }
+    }
+}
+
+void task13_4()
+{
+    int order = 7;
+#pragma omp parallel num_threads(8) shared(order)
+    {
+        int rank = omp_get_thread_num();
+        int size = omp_get_num_threads();
+        while (order > -1)
+        {
+            if (order == rank)
+            {
+                    printf("Thread %d out of %d threads. Hello world!\n", rank, size);
+#pragma omp atomic
+                    order--;
+            }
+
+        }
+    }
+}
+
+void task13_5()
+{
+    int order = 7;
+    omp_lock_t lock;
+    omp_init_lock(&lock);
+#pragma omp parallel num_threads(8) shared(order)
+    {
+        int rank = omp_get_thread_num();
+        int size = omp_get_num_threads();
+
+        while (order > -1)
+        {
+            if (order == rank)
+            {
+                omp_set_lock(&lock);
+                printf("Thread %d out of %d threads. Hello world!\n", rank, size);
+                order--;
+                omp_unset_lock(&lock);
+            }
+
+        }
+    }
+}
+
 int main()
 {
-    //task1();
-    //task2();
-    //task3();
-    //task4();
-    //task5();
-    //task6();
-    //task7();
-    //task8();
-    //task9();
-    //task10(); //to do
-    //task11();
-    //task12();
 
+    task13_5();
 }

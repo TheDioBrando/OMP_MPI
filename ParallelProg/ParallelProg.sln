@@ -5,6 +5,8 @@ VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ParallelProg", "ParallelProg\ParallelProg.vcxproj", "{BD40A09C-4BD3-4B70-867D-D9B0EC9DA8D4}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MPIParallelProg", "MPIParallelProg\MPIParallelProg.vcxproj", "{851AB36E-0E61-457D-83FF-41171BC03319}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -21,6 +23,14 @@ Global
 		{BD40A09C-4BD3-4B70-867D-D9B0EC9DA8D4}.Release|x64.Build.0 = Release|x64
 		{BD40A09C-4BD3-4B70-867D-D9B0EC9DA8D4}.Release|x86.ActiveCfg = Release|Win32
 		{BD40A09C-4BD3-4B70-867D-D9B0EC9DA8D4}.Release|x86.Build.0 = Release|Win32
+		{851AB36E-0E61-457D-83FF-41171BC03319}.Debug|x64.ActiveCfg = Debug|x64
+		{851AB36E-0E61-457D-83FF-41171BC03319}.Debug|x64.Build.0 = Debug|x64
+		{851AB36E-0E61-457D-83FF-41171BC03319}.Debug|x86.ActiveCfg = Debug|Win32
+		{851AB36E-0E61-457D-83FF-41171BC03319}.Debug|x86.Build.0 = Debug|Win32
+		{851AB36E-0E61-457D-83FF-41171BC03319}.Release|x64.ActiveCfg = Release|x64
+		{851AB36E-0E61-457D-83FF-41171BC03319}.Release|x64.Build.0 = Release|x64
+		{851AB36E-0E61-457D-83FF-41171BC03319}.Release|x86.ActiveCfg = Release|Win32
+		{851AB36E-0E61-457D-83FF-41171BC03319}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
